@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>STEP3：お客様情報の入力</title>
+  <style>
+    body {
+      font-family: system-ui, 'Noto Sans JP', sans-serif;
+      background: #fafafa;
+      padding: 1em;
+      color: #333;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 0.5em;
+    }
+
+    .summary {
+      text-align: center;
+      font-size: 0.95em;
+      margin-bottom: 1.5em;
+      color: #444;
+    }
+
+    form {
+      max-width: 480px;
+      margin: auto;
+      background: #fff;
+      padding: 1.5em;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.3em;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.6em;
+      margin-bottom: 1em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    button {
+      background: #4caf50;
+      color: white;
+      border: none;
+      padding: 0.7em 1.5em;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #388e3c;
+    }
+  </style>
+</head>
+<body>
+
+<h2>STEP3：お客様情報の入力</h2>
+
+<div class="summary" id="selectedInfo">
+  コースと時間を読み込み中...
+</div>
+
+<form id="customerForm" onsubmit="event.preventDefault(); goToConfirm();">
+  <label for="name">お名前（必須）</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="tel">電話番号（必須）</label>
+  <input type="tel" id="tel" name="tel" required>
+
+  <label for="email">メールアドレス（任意）</label>
+  <input type="email" id="email" name="email">
+
+  <label for="note">ご要望・備考（任意）</label>
+  <textarea id="note" name="note" placeholder="例：女性スタッフ希望、強め希望など"></textarea>
+
+  <button type="submit">STEP4：確認画面へ進む</button>
+</form>
+
+<script>
+  const course = sessionStorage.getItem("selectedCourse") || "未選択";
+  const time = sessionStorage.getItem("selectedTime") || "未選択";
+  document.getElementById("selectedInfo").innerHTML =
+    `選択中のコース：<strong>${course}</strong><br>選択中の時間：<strong>${time}</strong>`;
+
+  function goToConfirm() {
+    const name = document.getElementById("name").value.trim();
+    const tel = document.getElementById("tel").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const note = document.getElementById("note").value.trim();
+
+    sessionStorage.setItem("customerName", name);
+    sessionStorage.setItem("customerTel", tel);
+    sessionStorage.setItem("customerEmail", email);
+    sessionStorage.setItem("customerNote", note);
+
+    window.location.href = "step4_confirm.html";
+  }
+</script>
+
+</body>
+</html>

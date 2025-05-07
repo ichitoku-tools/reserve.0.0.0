@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STEP4：内容確認</title>
+  <style>
+    body {
+      font-family: system-ui, 'Noto Sans JP', sans-serif;
+      background: #fafafa;
+      padding: 1em;
+      color: #333;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1em;
+    }
+
+    .confirm-box {
+      max-width: 480px;
+      margin: auto;
+      background: #fff;
+      padding: 1.5em;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      font-size: 1em;
+    }
+
+    .confirm-item {
+      margin-bottom: 1em;
+    }
+
+    .label {
+      font-weight: bold;
+    }
+
+    .value {
+      margin-top: 0.2em;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+      flex-wrap: wrap;
+      margin-top: 2em;
+    }
+
+    .buttons button {
+      padding: 0.6em 1.5em;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      min-width: 130px;
+    }
+
+    .back-btn {
+      background: #ccc;
+      color: #333;
+    }
+
+    .submit-btn {
+      background: #4caf50;
+      color: white;
+    }
+
+    .submit-btn:hover {
+      background: #388e3c;
+    }
+  </style>
+</head>
+<body>
+
+<h2>STEP4：ご予約内容の確認</h2>
+
+<div class="confirm-box">
+  <div class="confirm-item">
+    <div class="label">コース</div>
+    <div class="value" id="confirmCourse"></div>
+  </div>
+  <div class="confirm-item">
+    <div class="label">時間帯</div>
+    <div class="value" id="confirmTime"></div>
+  </div>
+  <div class="confirm-item">
+    <div class="label">お名前</div>
+    <div class="value" id="confirmName"></div>
+  </div>
+  <div class="confirm-item">
+    <div class="label">電話番号</div>
+    <div class="value" id="confirmTel"></div>
+  </div>
+  <div class="confirm-item">
+    <div class="label">メールアドレス</div>
+    <div class="value" id="confirmEmail"></div>
+  </div>
+  <div class="confirm-item">
+    <div class="label">ご要望・備考</div>
+    <div class="value" id="confirmNote"></div>
+  </div>
+
+  <div class="buttons">
+    <button class="back-btn" onclick="history.back()">戻る</button>
+    <button class="submit-btn" onclick="submitReservation()">この内容で予約する</button>
+  </div>
+</div>
+
+<script>
+  const get = (key) => sessionStorage.getItem(key) || "未入力";
+
+  document.getElementById("confirmCourse").textContent = get("selectedCourse");
+  document.getElementById("confirmTime").textContent = get("selectedTime");
+  document.getElementById("confirmName").textContent = get("customerName");
+  document.getElementById("confirmTel").textContent = get("customerTel");
+  document.getElementById("confirmEmail").textContent = get("customerEmail");
+  document.getElementById("confirmNote").textContent = get("customerNote");
+
+  function submitReservation() {
+    alert("予約が完了しました！（仮）");
+    sessionStorage.clear();
+    window.location.href = "index.html";
+  }
+</script>
+
+</body>
+</html>

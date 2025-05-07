@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>STEP1：コースを選択</title>
+  <style>
+    body {
+      font-family: system-ui, 'Noto Sans JP', sans-serif;
+      background: #fdfdfd;
+      padding: 1em;
+      color: #333;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1em;
+    }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1em;
+      max-width: 960px;
+      margin: auto;
+    }
+
+    .course-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 1em;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s;
+      border: 2px solid transparent;
+    }
+
+    .course-card:hover {
+      transform: scale(1.02);
+      border-color: #4caf50;
+    }
+
+    .course-title {
+      font-size: 1.1em;
+      font-weight: bold;
+      margin-bottom: 0.5em;
+    }
+
+    .course-description {
+      font-size: 0.95em;
+      color: #666;
+      margin-bottom: 0.5em;
+    }
+
+    .course-info {
+      font-size: 0.9em;
+      margin-bottom: 0.8em;
+    }
+
+    .select-btn {
+      align-self: flex-end;
+      background: #4caf50;
+      color: white;
+      border: none;
+      padding: 0.5em 1em;
+      border-radius: 6px;
+      font-size: 0.95em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .select-btn:hover {
+      background: #388e3c;
+    }
+  </style>
+</head>
+<body>
+
+<h2>STEP1：ご希望のコースをお選びください</h2>
+
+<div class="course-grid">
+  <div class="course-card">
+    <div>
+      <div class="course-title">もみほぐし（60分）</div>
+      <div class="course-description">首・肩・背中を中心に全身をやさしくケア。</div>
+      <div class="course-info">所要時間：60分　料金：4,000円（税込）</div>
+    </div>
+    <button class="select-btn" onclick="selectCourse('もみほぐし 60分')">このコースを選ぶ</button>
+  </div>
+
+  <div class="course-card">
+    <div>
+      <div class="course-title">足ツボ付き（90分）</div>
+      <div class="course-description">足裏反射区を刺激し、内臓疲労にもアプローチ。</div>
+      <div class="course-info">所要時間：90分　料金：5,500円（税込）</div>
+    </div>
+    <button class="select-btn" onclick="selectCourse('足ツボ付き 90分')">このコースを選ぶ</button>
+  </div>
+
+  <div class="course-card">
+    <div>
+      <div class="course-title">オイルマッサージ（60分）</div>
+      <div class="course-description">アロマオイルを使った極上のリラックス施術。</div>
+      <div class="course-info">所要時間：60分　料金：5,800円（税込）</div>
+    </div>
+    <button class="select-btn" onclick="selectCourse('オイルマッサージ 60分')">このコースを選ぶ</button>
+  </div>
+</div>
+
+<script>
+function selectCourse(courseName) {
+  sessionStorage.setItem("selectedCourse", courseName);
+  window.location.href = "step2_course_time_slots.html";
+}
+</script>
+
+</body>
+</html>
